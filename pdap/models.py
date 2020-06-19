@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from marshmallow import Schema, fields
+
 db = SQLAlchemy()
 
 class Officer(db.Model):

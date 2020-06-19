@@ -1,5 +1,4 @@
-from flask import jsonify, request, render_template, Response
-from pdap import app
+from flask import jsonify, request, render_template, Response, current_app as app
 from pdap.models import Officer, OfficerSchema, db
 
 @app.errorhandler(404)
@@ -9,6 +8,7 @@ def not_found(error):
 
 @app.route("/")
 def hello():
+    print(app)
     message = "Welcome to the Police Data Accessibility Project"
     instruction = "You can interact with the API via /officer"
     return render_template('index.html', message=message, instruction=instruction)

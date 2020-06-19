@@ -1,0 +1,28 @@
+version: '3'
+services:
+  api:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./pdap:/pdap
+    ports:
+      - "3000:80"
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: pd@pU53r
+      MYSQL_DATABASE: pdap
+      MYSQL_USER: pdap
+      MYSQL_PASSWORD: pd@pU53r
+
+volumes:
+  db_data: {}

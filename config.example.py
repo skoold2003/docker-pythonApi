@@ -7,7 +7,18 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://<mysql_user>:<mysql_password>@db/pdap'
 
+class TestingConfig(Config):   
+    DEBUG = True
+    SQLALCHEMY_ECHO = False
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://<mysql_user>:<mysql_password>@localhost/pdap'
 
 class ProductionConfig(Config):
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://<mysql_user>:<mysql_password>@db/pdap'
+
+
+config_classes = {
+    "development": DevelopmentConfig,
+    "testing": TestingConfig,
+    "production": ProductionConfig
+}
